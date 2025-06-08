@@ -1,0 +1,20 @@
+name: Two Jobs Sequential
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 1 - Say Hello
+        run: echo "This is Job 1"
+
+  job2:
+    needs: job1   
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job 2 - Say Goodbye
+        run: echo "This is Job 2"
